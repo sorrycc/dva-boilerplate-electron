@@ -19,3 +19,9 @@ Then open another terminal, and run start.
 ```bash
 $ npm start
 ```
+
+## Build application
+
+```bash
+$ npm run pack
+```

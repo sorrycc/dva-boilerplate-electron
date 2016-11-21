@@ -1,0 +1,51 @@
+{
+  "private": true,
+  "author": {
+    "name": "chencheng",
+    "email": "sorrycc@gmail.com"
+  },
+  "scripts": {
+    "start": "electron app/dist/main",
+    "postinstall": "install-app-deps",
+    "dev": "webpack -w",
+    "clean": "chmod u+x dist && rm -rf node_modules app/node_modules dist app/dist",
+    "build": "NODE_ENV=production webpack",
+    "test": "npm run pack && xo && ava",
+    "pack": "npm run build && build --dir"
+  },
+  "build": {
+    "appId": "com.sorrycc.dva-boilerplate",
+    "category": "public.app-category.developer-tools",
+    "asar": false
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-import": "^1.0.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2015-node": "^6.1.1",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.0",
+    "dva": "^1.1.0",
+    "electron": "^1.4.7",
+    "electron-builder": "^8.6.0",
+    "eslint": "^3.10.2",
+    "eslint-config-xo": "^0.17.0",
+    "eslint-plugin-ava": "^4.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-unicorn": "^1.0.0",
+    "postcss": "^5.2.5",
+    "postcss-loader": "^1.1.1",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-livereload-plugin": "^0.9.0",
+    "xo": "^0.17.1"
+  },
+  "license": "MIT"
+}

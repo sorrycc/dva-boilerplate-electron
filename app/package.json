@@ -1,0 +1,14 @@
+{
+  "name": "dva-electron-boilerplate",
+  "version": "0.1.0",
+  "productName": "Boilerplate",
+  "description": "Yet another boilerplate for dva.",
+  "main": "dist/main.js",
+  "author": {
+    "name": "chencheng",
+    "email": "sorrycc@gmail.com"
+  },
+  "dependencies": {
+    "electron-is-dev": "^0.1.2"
+  }
+}

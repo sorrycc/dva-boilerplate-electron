@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="root"></div>
+  <script src="../dist/renderer.js"></script>
+
+  <script>
+    // Only attach the livereloading script if
+    // the app is in development mode
+    if (require('electron').remote.require('electron-is-dev')) {
+      const me = document.createElement('script');
+      me.setAttribute('src', 'http://localhost:35729/livereload.js');
+      document.body.appendChild(me);
+    }
+  </script>
+
+</body>
+</html>

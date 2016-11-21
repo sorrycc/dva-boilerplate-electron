@@ -11,7 +11,7 @@ module.exports = [
   {
     name: 'renderer',
     devtool: isProd ? '' : 'cheap-eval-source-map',
-    entry: './app/renderer/index.js',
+    entry: './src/renderer/index.js',
     output: {
       path: outputPath,
       filename: 'renderer.js',
@@ -67,7 +67,7 @@ module.exports = [
   },
   {
     name: 'main',
-    entry: './app/main/index.js',
+    entry: './src/main/index.js',
     target: 'electron',
     output: {
       path: outputPath,
@@ -90,10 +90,10 @@ module.exports = [
             plugins: [
               'transform-es2015-modules-commonjs',
               'transform-async-to-generator'
-            ]
+            ],
           },
         },
-      ]
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({

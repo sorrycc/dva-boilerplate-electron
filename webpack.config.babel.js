@@ -1,13 +1,12 @@
-const path = require('path');
-const webpack = require('webpack');
-const LiveReloadPlugin = require('webpack-livereload-plugin')
-const Copy = require('copy-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import LiveReloadPlugin from 'webpack-livereload-plugin';
 
-const outputPath = path.join(__dirname, 'app', 'dist')
+const outputPath = path.join(__dirname, 'app', 'dist');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProd = nodeEnv === 'production';
 
-module.exports = [
+export default [
   {
     name: 'renderer',
     devtool: isProd ? '' : 'cheap-eval-source-map',
@@ -19,10 +18,10 @@ module.exports = [
     externals(context, request, callback) {
       let isExternal = false;
       const load = [
-        'electron'
+        'electron',
       ];
       if (load.includes(request)) {
-        isExternal = 'require("' + request + '")';
+        isExternal = `require("${request}")`;
       }
       callback(null, isExternal);
     },
@@ -35,13 +34,13 @@ module.exports = [
           query: {
             cacheDirectory: true,
             presets: [
-              'react'
+              'react',
             ],
             plugins: [
               'transform-es2015-modules-commonjs',
-              'transform-async-to-generator'
-            ]
-          }
+              'transform-async-to-generator',
+            ],
+          },
         },
         {
           test: /\.css$/,
@@ -51,14 +50,14 @@ module.exports = [
         {
           test: /\.css$/,
           include: /node_modules/,
-          loader: 'style-loader!css-loader!postcss-loader'
+          loader: 'style-loader!css-loader!postcss-loader',
         },
       ],
     },
     plugins: [
       new webpack.DefinePlugin({
         'process.env': { // eslint-disable-line quote-props
-          NODE_ENV: JSON.stringify(nodeEnv)
+          NODE_ENV: JSON.stringify(nodeEnv),
         },
       }),
       new LiveReloadPlugin(),
@@ -77,7 +76,7 @@ module.exports = [
       __dirname: true,
     },
     externals(context, request, callback) {
-      callback(null, request.charAt(0) === '.' ? false : 'require("' + request + '")');
+      callback(null, request.charAt(0) === '.' ? false : `require("${request}")`);
     },
     module: {
       loaders: [
@@ -89,7 +88,7 @@ module.exports = [
             cacheDirectory: true,
             plugins: [
               'transform-es2015-modules-commonjs',
-              'transform-async-to-generator'
+              'transform-async-to-generator',
             ],
           },
         },

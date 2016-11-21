@@ -31,16 +31,6 @@ export default [
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
-          query: {
-            cacheDirectory: true,
-            presets: [
-              'react',
-            ],
-            plugins: [
-              'transform-es2015-modules-commonjs',
-              'transform-async-to-generator',
-            ],
-          },
         },
         {
           test: /\.css$/,
@@ -83,14 +73,7 @@ export default [
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: 'babel',
-          query: {
-            cacheDirectory: true,
-            plugins: [
-              'transform-es2015-modules-commonjs',
-              'transform-async-to-generator',
-            ],
-          },
+          loader: 'babel-loader',
         },
       ],
     },

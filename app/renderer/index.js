@@ -7,5 +7,5 @@ function App() {
   return <div>App</div>;
 }
 
-app.router(_ => <App />);
+app.router(() => <App />);
 app.start('#root');

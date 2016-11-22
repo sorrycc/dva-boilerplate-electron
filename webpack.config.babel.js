@@ -1,6 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 import LiveReloadPlugin from 'webpack-livereload-plugin';
+import cssNano from 'cssnano';
+import cssImport from 'postcss-import';
+import cssNested from 'postcss-nested';
 
 const outputPath = path.join(__dirname, 'app', 'dist');
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -43,6 +46,13 @@ export default [
           loader: 'style-loader!css-loader!postcss-loader',
         },
       ],
+    },
+    postcss() {
+      return [
+        cssImport,
+        cssNested,
+        cssNano,
+      ];
     },
     plugins: [
       new webpack.DefinePlugin({

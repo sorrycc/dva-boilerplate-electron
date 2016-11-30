@@ -12,7 +12,7 @@ const isProd = nodeEnv === 'production';
 export default [
   {
     name: 'renderer',
-    devtool: isProd ? '' : 'cheap-eval-source-map',
+    devtool: isProd ? '' : 'source-map',
     entry: './src/renderer/index.js',
     output: {
       path: outputPath,

@@ -1,16 +1,12 @@
 /* global $dirname */
-import { app, BrowserWindow } from 'electron';
-import { join } from 'path';
+import { app } from 'electron';
+import isDev from 'electron-is-dev';
+import * as application from './services/application';
 
-function openMainWindow() {
-  let mainWindow = new BrowserWindow({ width: 800, height: 600 });
-  mainWindow.loadURL(`file://${join($dirname, '..', 'pages')}/main.html`);
-  mainWindow.webContents.openDevTools();
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
+if (isDev) {
+  require('electron-debug')();
 }
 
 app.on('ready', () => {
-  openMainWindow();
+  application.init();
 });

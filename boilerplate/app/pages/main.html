@@ -12,7 +12,7 @@
   <script>
     // Only attach the livereloading script if
     // the app is in development mode
-    if (require('electron').remote.require('electron-is-dev')) {
+    if (require('electron').remote.require('electron-is').dev()) {
       const me = document.createElement('script');
       me.setAttribute('src', 'http://localhost:35729/livereload.js');
       document.body.appendChild(me);

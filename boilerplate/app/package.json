@@ -9,6 +9,8 @@
     "email": "sorrycc@gmail.com"
   },
   "dependencies": {
-    "electron-is": "^2.3.0"
+    "electron-config": "^0.2.1",
+    "electron-is": "^2.3.0",
+    "electron-log": "^1.2.2"
   }
 }

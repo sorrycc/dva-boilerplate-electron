@@ -6,13 +6,16 @@
   },
   "scripts": {
     "start": "electron app/dist/main",
-    "postinstall": "install-app-deps",
+    "Xpostinstall": "cd app && tnpm i && cd .. && npm run rebuild",
     "dev": "webpack -w",
     "clean": "chmod u+x dist && rm -rf node_modules app/node_modules dist app/dist",
     "build": "NODE_ENV=production webpack",
     "lint": "eslint --ext .js src test webpack.config.babel.js",
     "test": "mocha test/**/*-test.js --require babel-register --no-timeouts",
-    "pack": "npm run build && build --dir",
+    "rebuild": "electron-rebuild -m ./app/node_modules",
+    "pack": "npm run build && npm run rebuild && build",
+    "pack:dir": "npm run build && npm run rebuild && build --dir",
+    "pack:justBuild": "build --dir",
     "precommit": "npm run lint"
   },
   "build": {
@@ -40,6 +43,7 @@
     "electron": "^1.4.7",
     "electron-builder": "^8.6.0",
     "electron-debug": "^1.1.0",
+    "electron-rebuild": "^1.4.0",
     "eslint": "^3.10.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",

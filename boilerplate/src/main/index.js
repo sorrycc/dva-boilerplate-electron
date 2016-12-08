@@ -32,6 +32,18 @@ app.on('ready', () => {
   }
 });
 
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (window.getCount() === 0) {
+    application.init();
+  }
+});
+
 app.on('quit', () => {
   log.info('(main/index) app quit');
   log.info('(main/index) <<<<<<<<<<<<<<<<<<<');

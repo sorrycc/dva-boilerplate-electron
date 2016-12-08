@@ -12,6 +12,10 @@ $ curl -fsSL https://github.com/sorrycc/dva-boilerplate-electron/archive/master.
 
 You can also `git clone` or [download](https://github.com/sorrycc/dva-boilerplate-electron/archive/master.zip) this repo and get contents of the boilerplate folder.
 
+## Screenshot
+
+<img src="https://zos.alipayobjects.com/rmsportal/LAARQwsZLSimLnXugGID.png" width="912" height="712" />
+
 ## License
 
 [MIT](https://tldrlegal.com/license/mit-license)

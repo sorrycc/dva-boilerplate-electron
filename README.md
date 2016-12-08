@@ -12,6 +12,15 @@ $ curl -fsSL https://github.com/sorrycc/dva-boilerplate-electron/archive/master.
 
 You can also `git clone` or [download](https://github.com/sorrycc/dva-boilerplate-electron/archive/master.zip) this repo and get contents of the boilerplate folder.
 
+## Features
+
+- Two-Package.json Structure
+- Build src with webpack and babel, no grunt or gulp
+- Do communicate between main and renderer with `electron.remote`
+- Integrate two chrome extensions: redux devtool and react devtool
+- Livereload js and css
+- ...
+
 ## Directory Structure
 
 ```js

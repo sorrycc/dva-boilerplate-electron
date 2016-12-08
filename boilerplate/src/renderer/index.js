@@ -1,11 +1,16 @@
-import React from 'react';
 import dva from 'dva';
 
+// 1. Initialize
 const app = dva();
 
-function App() {
-  return <div>App</div>;
-}
+// 2. Plugins
+// app.use({});
 
-app.router(() => <App />);
+// 3. Model
+// app.model(require('./models/example'));
+
+// 4. Router
+app.router(require('./router'));
+
+// 5. Start
 app.start('#root');

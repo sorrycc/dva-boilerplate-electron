@@ -1,9 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 import LiveReloadPlugin from 'webpack-livereload-plugin';
-import cssNano from 'cssnano';
 import cssImport from 'postcss-import';
 import cssNested from 'postcss-nested';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const outputPath = path.join(__dirname, 'app', 'dist');
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -11,12 +11,14 @@ const isProd = nodeEnv === 'production';
 
 export default [
   {
-    name: 'renderer',
+    target: 'web',
     devtool: isProd ? '' : 'source-map',
-    entry: './src/renderer/index.js',
+    entry: {
+      renderer: './src/renderer/index.js',
+    },
     output: {
       path: outputPath,
-      filename: 'renderer.js',
+      filename: '[name].js',
     },
     externals(context, request, callback) {
       let isExternal = false;
@@ -38,12 +40,20 @@ export default [
         {
           test: /\.css$/,
           exclude: /node_modules/,
-          loader: 'style-loader!css-loader?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!postcss-loader',
+          loader: ExtractTextPlugin.extract(
+            'css-loader?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!postcss-loader',
+          ),
         },
         {
           test: /\.css$/,
           include: /node_modules/,
-          loader: 'style-loader!css-loader!postcss-loader',
+          loader: ExtractTextPlugin.extract(
+            'css-loader?sourceMap!postcss-loader',
+          ),
+        },
+        {
+          test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i,
+          loader: 'url-loader?limit=10000',
         },
       ],
     },
@@ -51,7 +61,6 @@ export default [
       return [
         cssImport,
         cssNested,
-        cssNano,
       ];
     },
     plugins: [
@@ -59,21 +68,23 @@ export default [
         'process.env': { // eslint-disable-line quote-props
           NODE_ENV: JSON.stringify(nodeEnv),
         },
+        $dirname: '__dirname',
+      }),
+      new ExtractTextPlugin('[name].css', {
+        disable: false,
+        allChunks: true,
       }),
       new LiveReloadPlugin(),
     ],
-    target: 'web',
   },
   {
-    name: 'main',
-    entry: './src/main/index.js',
     target: 'electron',
+    entry: {
+      main: './src/main/index.js',
+    },
     output: {
       path: outputPath,
-      filename: 'main.js',
-    },
-    node: {
-      __dirname: true,
+      filename: '[name].js',
     },
     externals(context, request, callback) {
       callback(null, request.charAt(0) === '.' ? false : `require("${request}")`);

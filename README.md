@@ -1,27 +1,17 @@
-# dva-electron-boilerplate
+# dva-boilerplate-electron
 
-## Getting Started
+Boilerplate to kickstart creating an app with Electron and [dva](https://github.com/dvajs/dva).
 
-Install dependencies.
+## Getting started
 
-```bash
-$ npm install
-```
-
-Start webpack and watch.
+In your directory, run:
 
 ```bash
-$ npm run dev
+$ curl -fsSL https://github.com/sorrycc/dva-boilerplate-electron/archive/master.tar.gz | tar -xz --strip-components 2
 ```
 
-Then open another terminal, and run start.
+You can also `git clone` or [download](https://github.com/sorrycc/dva-boilerplate-electron/archive/master.zip) this repo and get contents of the boilerplate folder.
 
-```bash
-$ npm start
-```
+## License
 
-## Build application
-
-```bash
-$ npm run pack
-```
+[MIT](https://tldrlegal.com/license/mit-license)

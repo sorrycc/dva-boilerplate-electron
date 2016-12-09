@@ -1,6 +1,8 @@
 # dva-boilerplate-electron
 
-Boilerplate to kickstart creating an app with Electron and [dva](https://github.com/dvajs/dva).
+> Boilerplate to kickstart creating an app with Electron and [dva](https://github.com/dvajs/dva).
+
+详见[Electron 应用实战 (架构篇)](https://github.com/sorrycc/blog/issues/13)，解释为何这样组织。
 
 ## Getting started
 

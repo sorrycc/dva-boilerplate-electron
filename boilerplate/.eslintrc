@@ -28,5 +28,18 @@
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true
     }
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "$dirname": true,
+    "describe": true,
+    "xdescribe": true,
+    "it": true,
+    "xit": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "before": true,
+    "after": true
   }
 }

@@ -1,4 +1,3 @@
-/* global $dirname */
 import { app, BrowserWindow } from 'electron';
 import is from 'electron-is';
 import { join } from 'path';

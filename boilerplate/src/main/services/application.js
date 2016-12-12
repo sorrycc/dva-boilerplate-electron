@@ -1,4 +1,3 @@
-/* global $dirname */
 import { join } from 'path';
 import { create } from './window';
 

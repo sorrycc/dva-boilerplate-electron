@@ -1,25 +1,33 @@
-import path from 'path';
 import webpack from 'webpack';
-import LiveReloadPlugin from 'webpack-livereload-plugin';
 import cssImport from 'postcss-import';
 import cssNested from 'postcss-nested';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import mainConfig from './webpack.config.main.babel.js';
 
-const outputPath = path.join(__dirname, 'app', 'dist');
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isProd = nodeEnv === 'production';
+const serverIp = '0.0.0.0';
+const serverPort = '4010';
 
 export default [
   {
     target: 'web',
-    devtool: isProd ? '' : 'source-map',
     entry: {
-      renderer: './src/renderer/index.js',
+      renderer: [
+        './src/renderer/index.js',
+        `webpack-dev-server/client?http://${serverIp}:${serverPort}`,
+        'webpack/hot/only-dev-server',
+      ],
     },
     output: {
-      path: outputPath,
       filename: '[name].js',
+      publicPath: '/',
+    },
+    devServer: {
+      host: serverIp,
+      port: serverPort,
+      contentBase: './src/renderer',
+      historyApiFallback: true,
+      stats: {
+        chunks: false,
+      },
     },
     externals(context, request, callback) {
       let isExternal = false;
@@ -65,18 +73,16 @@ export default [
       ];
     },
     plugins: [
-      new webpack.DefinePlugin({
-        'process.env': { // eslint-disable-line quote-props
-          NODE_ENV: JSON.stringify(nodeEnv),
-        },
-        $dirname: '__dirname',
-      }),
       new ExtractTextPlugin('[name].css', {
         disable: false,
         allChunks: true,
       }),
-      new LiveReloadPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
     ],
   },
-  mainConfig,
 ];
+
+export {
+  serverIp,
+  serverPort,
+};

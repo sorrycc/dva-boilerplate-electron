@@ -10,9 +10,9 @@ Install dependencies.
 $ npm install
 ```
 
-Start webpack and watch.
-
+Start webpack and watch(Open two terminal run these).
 ```bash
+$ npm run dev-server
 $ npm run dev
 ```
 

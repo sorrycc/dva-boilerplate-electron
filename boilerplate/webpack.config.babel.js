@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import LiveReloadPlugin from 'webpack-livereload-plugin';
 import cssImport from 'postcss-import';
 import cssNested from 'postcss-nested';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -75,7 +74,6 @@ export default [
         disable: false,
         allChunks: true,
       }),
-      new LiveReloadPlugin(),
     ],
   },
   mainConfig,

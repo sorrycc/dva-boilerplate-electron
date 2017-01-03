@@ -2,7 +2,6 @@ import { app, BrowserWindow } from 'electron';
 import is from 'electron-is';
 import { join } from 'path';
 import log from 'electron-log';
-import electronDebug from 'electron-debug';
 import * as application from './services/application';
 import * as window from './services/window';
 import * as menu from './services/menu';
@@ -13,7 +12,7 @@ log.info('(main/index) app start');
 log.info(`(main/index) log file at ${log.findLogPath()}`);
 
 if (is.dev()) {
-  electronDebug();
+  require('electron-debug')(); // eslint-disable-line global-require
 }
 
 app.on('ready', () => {

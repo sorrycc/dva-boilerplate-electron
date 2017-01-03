@@ -1,9 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
-import LiveReloadPlugin from 'webpack-livereload-plugin';
 import cssImport from 'postcss-import';
 import cssNested from 'postcss-nested';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import mainConfig from './webpack.config.main.babel.js';
 
 const outputPath = path.join(__dirname, 'app', 'dist');
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -74,34 +74,7 @@ export default [
         disable: false,
         allChunks: true,
       }),
-      new LiveReloadPlugin(),
     ],
   },
-  {
-    target: 'electron',
-    entry: {
-      main: './src/main/index.js',
-    },
-    output: {
-      path: outputPath,
-      filename: '[name].js',
-    },
-    externals(context, request, callback) {
-      callback(null, request.charAt(0) === '.' ? false : `require("${request}")`);
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
-        },
-      ],
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        $dirname: '__dirname',
-      }),
-    ],
-  },
+  mainConfig,
 ];

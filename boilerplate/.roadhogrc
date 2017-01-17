@@ -1,0 +1,20 @@
+{
+  "entry": "./src/renderer/renderer.js",
+  "outputPath": "./app/dist",
+  "define": {
+    "$dirname": "__dirname"
+  },
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr",
+        "transform-runtime"
+      ]
+    },
+    "production": {
+      "extraBabelPlugins": [
+        "transform-runtime"
+      ]
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import dva from 'dva';
+import './main-dev.html';
 
 // 1. Initialize
 const app = dva();

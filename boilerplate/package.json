@@ -7,7 +7,9 @@
   "scripts": {
     "start": "electron app/dist/main",
     "Xpostinstall": "cd app && tnpm i && cd .. && npm run rebuild",
-    "dev": "concurrently \"roadhog server --no-open\" \"webpack -w --config ./webpack.config.main.babel.js\"",
+    "dev:renderer": "roadhog server --no-open",
+    "dev:main": "webpack -w --config ./webpack.config.main.babel.js",
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:main\"",
     "clean": "chmod u+x dist && rm -rf node_modules app/node_modules dist app/dist",
     "build": "roadhog build && webpack --config ./webpack.config.main.babel.js",
     "lint": "eslint --ext .js src test webpack.config.babel.js",

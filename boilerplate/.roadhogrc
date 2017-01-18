@@ -1,5 +1,5 @@
 {
-  "entry": "./src/renderer/renderer.js",
+  "entry": "./src/renderer/index.js",
   "outputPath": "./app/dist",
   "define": {
     "$dirname": "__dirname"

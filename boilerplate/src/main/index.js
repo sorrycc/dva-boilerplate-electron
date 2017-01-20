@@ -7,6 +7,8 @@ import * as window from './services/window';
 import * as menu from './services/menu';
 import * as config from './configs/config';
 
+log.transports.file.level = 'info';
+
 log.info('(main/index) >>>>>>>>>>>>>>>>>>');
 log.info('(main/index) app start');
 log.info(`(main/index) log file at ${log.findLogPath()}`);

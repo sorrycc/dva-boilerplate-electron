@@ -14,7 +14,7 @@
     "build": "roadhog build && webpack --config ./webpack.config.main.babel.js",
     "lint": "eslint --ext .js src test webpack.config.babel.js",
     "test": "mocha test/**/*-test.js --require babel-register --require ./test/setup --no-timeouts",
-    "rebuild": "electron-rebuild -m ./app/node_modules",
+    "rebuild": "electron-rebuild -m ./app",
     "pack": "npm run build && npm run rebuild && build",
     "pack:dir": "npm run build && npm run rebuild && build --dir",
     "pack:justBuild": "build --dir",

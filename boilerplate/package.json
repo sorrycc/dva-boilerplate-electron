@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "electron app/dist/main",
-    "Xpostinstall": "cd app && tnpm i && cd .. && npm run rebuild",
+    "postinstall": "cd app && tnpm i && cd .. && npm run rebuild",
     "dev:renderer": "roadhog server --no-open",
     "dev:main": "webpack -w --config ./webpack.config.main.babel.js",
     "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:main\"",
